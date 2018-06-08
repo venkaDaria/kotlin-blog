@@ -4,10 +4,6 @@
  */
 build { finalizedBy(tasks['detektCheck']) }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.5.1'
-}
-
 /**
  * Detekt support
  *
@@ -20,7 +16,7 @@ detekt {
         config = "$projectDir/src/main/resources/default-detekt-config.yml"
         input = "$projectDir/src/"
         filters = ".*/resources/.*"
-        output = file("build/reports")
+        output = file("$buildDir/reports")
         outputName = "detekt"
     }
 }
@@ -29,4 +25,43 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+/**
+ * JaCoCo Support
+ *
+ * @use ./gradlew test [jacocoTestReport]
+ */
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.8.1"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+
+        html.destination file("$buildDir/reports")
+    }
+}
+
+// must be called before JaCoCo tasks
+test {
+    jacoco {
+        append = false
+    }
+
+    // calls jacocoTestReport
+    finalizedBy jacocoTestReport
+}
+
+/**
+ * Sets Gradle version
+ *
+ * @use ./gradlew wrapper
+ */
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.5.1'
 }
