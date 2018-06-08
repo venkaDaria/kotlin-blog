@@ -12,8 +12,8 @@ class TestController(val postsRepository: PostsRepository) {
     @GetMapping("/post")
     @ModelAttribute("post")
     fun post(): Post {
-        val names = postsRepository.listHeaders()
+        val headers = postsRepository.listHeaders()
 
-        return postsRepository[names[0]]
+        return postsRepository[headers[0]]
     }
 }

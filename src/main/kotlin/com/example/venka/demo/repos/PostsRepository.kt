@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 
 private const val ARTICLES_PATH = "/static/posts/"
 
-private val ARTICLES_DIR = ClassPathResource(ARTICLES_PATH).file
+private val articlesDir = ClassPathResource(ARTICLES_PATH).file
 
 @Repository
 class PostsRepository(
@@ -19,7 +19,7 @@ class PostsRepository(
 ) {
 
     @Throws(IOException::class)
-    fun listHeaders(): List<PostHeader> = ARTICLES_DIR.listFiles().map {
+    fun listHeaders(): List<PostHeader> = articlesDir.listFiles().map {
         it.toPostHeader()
     }
 

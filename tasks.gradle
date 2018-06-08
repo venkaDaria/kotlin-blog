@@ -1,0 +1,32 @@
+/**
+ * Overrides default build task,
+ * can be used with --console=verbose to show called tasks
+ */
+build { finalizedBy(tasks['detektCheck']) }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.5.1'
+}
+
+/**
+ * Detekt support
+ *
+ * @use ./gradlew detektCheck
+ */
+detekt {
+    version = "1.0.0.RC7-2"
+
+    defaultProfile {
+        config = "$projectDir/src/main/resources/default-detekt-config.yml"
+        input = "$projectDir/src/"
+        filters = ".*/resources/.*"
+        output = file("build/reports")
+        outputName = "detekt"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
