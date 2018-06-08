@@ -37,12 +37,14 @@ Here's a numbered list:
 Note again how the actual text starts at 4 columns in (4 characters
 from the left side). Here's a code sample:
 
+<?prettify ?>
     # Let me re-iterate ...
     for i in 1 .. 10 { do-something(i) }
 
 As you probably guessed, indented 4 spaces. By the way, instead of
 indenting the block, you can use delimited blocks, if you like:
 
+<?prettify ?>
 ~~~
 define foobar() {
     print "Welcome to flavor country!";
@@ -52,6 +54,7 @@ define foobar() {
 (which makes copying & pasting easier). You can optionally mark the
 delimited block for Pandoc to syntax highlight it:
 
+<?prettify lang=python?>
 ~~~python
 import time
 # Quick, count to ten!
@@ -61,12 +64,10 @@ for i in range(10):
     print i
 ~~~
 
-
-
 ### An h3 header ###
 
 Now a nested list:
-
+****
  1. First, get these ingredients:
 
       * carrots
