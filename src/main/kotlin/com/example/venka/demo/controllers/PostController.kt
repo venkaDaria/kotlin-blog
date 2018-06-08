@@ -1,19 +1,19 @@
 package com.example.venka.demo.controllers
 
 import com.example.venka.demo.model.Post
-import com.example.venka.demo.repos.PostsRepository
-import org.springframework.stereotype.Controller
+import com.example.venka.demo.repos.PostRepository
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.RestController
 
-@Controller
-class TestController(val postsRepository: PostsRepository) {
+@RestController
+class PostController(val postRepository: PostRepository) {
 
     @GetMapping("/post")
     @ModelAttribute("post")
     fun post(): Post {
-        val headers = postsRepository.listHeaders()
+        val headers = postRepository.listHeaders()
 
-        return postsRepository[headers[0]]
+        return postRepository[headers[0]]
     }
 }

@@ -14,7 +14,7 @@ private const val ARTICLES_PATH = "/static/posts/"
 private val articlesDir = ClassPathResource(ARTICLES_PATH).file
 
 @Repository
-class PostsRepository(
+class PostRepository(
         private val htmlGeneratorBuilder: (String) -> HtmlGenerator
 ) {
 

@@ -4,9 +4,9 @@ import com.example.venka.demo.exception.PostHeaderParsingException
 import java.io.File
 import java.time.LocalDate
 
-class PostHeader(val name: String, val date: LocalDate, val fullName: String)
+data class PostHeader(val name: String, val date: LocalDate, val fullName: String)
 
-class Post(val header: PostHeader, val text: String)
+data class Post(val header: PostHeader, val text: String)
 
 fun PostHeader.toPost(text: String): Post = Post(this, text)
 
