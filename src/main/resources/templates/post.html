@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:replace="layout/index :: layout">
+<body>
+<div class="blog-post" id="content">
+    <h2 class="blog-post-title" th:text="${post.header.name}"></h2>
+    <p class="blog-post-meta" th:text="${post.header.date}"></p>
+
+    <div th:utext="${post.text}"></div>
+</div><!-- /.blog-post -->
+</body>
+</html>
