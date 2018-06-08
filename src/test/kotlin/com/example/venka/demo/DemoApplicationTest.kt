@@ -9,5 +9,6 @@ class DemoApplicationTest : AbstractTestNGSpringContextTests() {
 
     @Test
     fun contextLoads() {
+        main(arrayOf())
     }
 }
