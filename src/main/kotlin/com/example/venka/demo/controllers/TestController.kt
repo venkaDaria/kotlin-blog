@@ -11,7 +11,7 @@ class TestController(val postsRepository: PostsRepository) {
 
     @GetMapping("/post")
     @ModelAttribute("post")
-    fun post() : Post {
+    fun post(): Post {
         val names = postsRepository.getAllNames()
 
         return postsRepository[names[0]]
