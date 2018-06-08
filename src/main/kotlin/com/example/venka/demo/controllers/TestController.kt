@@ -12,7 +12,7 @@ class TestController(val postsRepository: PostsRepository) {
     @GetMapping("/post")
     @ModelAttribute("post")
     fun post(): Post {
-        val names = postsRepository.getAllNames()
+        val names = postsRepository.listHeaders()
 
         return postsRepository[names[0]]
     }

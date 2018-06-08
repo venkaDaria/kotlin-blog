@@ -19,7 +19,7 @@ class PostsRepository(
 ) {
 
     @Throws(IOException::class)
-    fun getAllNames(): List<PostHeader> = ARTICLES_DIR.listFiles().map {
+    fun listHeaders(): List<PostHeader> = ARTICLES_DIR.listFiles().map {
         it.toPostHeader()
     }
 
