@@ -1,4 +1,4 @@
-Feature: If test post is loaded?
+Feature: If PostHeader is created in right way?
 
   Scenario: Transform File to PostHeader
     Given title is "test-07-06-2018.md"

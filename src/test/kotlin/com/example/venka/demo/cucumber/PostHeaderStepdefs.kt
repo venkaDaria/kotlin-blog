@@ -1,4 +1,4 @@
-package com.example.venka.demo
+package com.example.venka.demo.cucumber
 
 import com.example.venka.demo.exception.PostHeaderParsingException
 import com.example.venka.demo.model.PostHeader
@@ -17,7 +17,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.time.LocalDate
 
-class PostHeaderSteps {
+class PostHeaderStepdefs {
 
     private lateinit var title: String
     private lateinit var postHeader: PostHeader
