@@ -61,6 +61,10 @@ dependencies {
     testImplementation group: 'io.mockk', name: 'mockk', version: '1.8.1'
 
     testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    testCompile 'io.cucumber:cucumber-java8:2.+'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java',  version: '2.53.0'
+    testCompile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.20'
 }
 
 apply from: 'tasks.gradle'
