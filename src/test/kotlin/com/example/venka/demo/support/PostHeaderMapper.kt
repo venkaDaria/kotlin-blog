@@ -2,10 +2,10 @@ package com.example.venka.demo.support
 
 import com.example.venka.demo.model.PostHeader
 import com.example.venka.demo.model.toPostHeader
-import cucumber.api.Transformer
+import io.cucumber.cucumberexpressions.Transformer
 import java.io.File
 
-class PostHeaderMapper : Transformer<PostHeader>() {
+class PostHeaderMapper : Transformer<PostHeader> {
 
     override fun transform(value: String?): PostHeader = File(value).toPostHeader()
 }

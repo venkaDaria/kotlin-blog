@@ -1,11 +1,9 @@
-package com.example.venka.demo.cucumber
+package com.example.venka.demo.cucumber.postHeader
 
 import com.example.venka.demo.exception.PostHeaderParsingException
 import com.example.venka.demo.model.PostHeader
 import com.example.venka.demo.model.toPostHeader
-import com.example.venka.demo.support.DateMapper
 import com.example.venka.demo.support.ExceptionHandler
-import cucumber.api.Transform
 import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
@@ -49,7 +47,7 @@ class PostHeaderStepdefs {
     }
 
     @Then("^Date must be \"([^\"]*)\"$")
-    fun dateMustBe(@Transform(DateMapper::class) answer: LocalDate) {
+    fun dateMustBe(answer: LocalDate) {
         assertEquals(this.postHeader.date, answer)
     }
 

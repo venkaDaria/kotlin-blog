@@ -1,11 +1,8 @@
-package com.example.venka.demo.cucumber
+package com.example.venka.demo.cucumber.post
 
 import com.example.venka.demo.model.Post
 import com.example.venka.demo.model.PostHeader
 import com.example.venka.demo.repos.PostRepository
-import com.example.venka.demo.support.DateMapper
-import com.example.venka.demo.support.PostHeaderMapper
-import cucumber.api.Transform
 import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
@@ -30,7 +27,7 @@ class PostStepdefs {
     }
 
     @Given("^post title is \"([^\"]*)\"$")
-    fun postTitleIs(@Transform(PostHeaderMapper::class) title: PostHeader) {
+    fun postTitleIs(title: PostHeader) {
         this.title = title
     }
 
@@ -46,23 +43,23 @@ class PostStepdefs {
         this.post = postRepository[title]
     }
 
-    @Then("^2 Text must be \"([^\"]*)\"$")
+    @Then("^Text must be \"([^\"]*)\"$")
     fun textMustBe(answer: String) {
         Assert.assertEquals(post.text, answer)
     }
 
-    @Then("^2 Name must be \"([^\"]*)\"$")
+    @Then("^Name must be \"([^\"]*)\"$")
     fun nameMustBe(answer: String) {
         Assert.assertEquals(post.header.name, answer)
     }
 
-    @Then("^2 Full name must be \"([^\"]*)\"$")
+    @Then("^Full name must be \"([^\"]*)\"$")
     fun fullNameMustBe(answer: String) {
         Assert.assertEquals(post.header.fullName, answer)
     }
 
-    @Then("^2 Date must be \"([^\"]*)\"$")
-    fun dateMustBe(@Transform(DateMapper::class) answer: LocalDate) {
+    @Then("^Date must be \"([^\"]*)\"$")
+    fun dateMustBe(answer: LocalDate) {
         Assert.assertEquals(post.header.date, answer)
     }
 }

@@ -1,10 +1,10 @@
 package com.example.venka.demo.support
 
-import cucumber.api.Transformer
+import io.cucumber.cucumberexpressions.Transformer
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class DateMapper : Transformer<LocalDate>() {
+class DateMapper : Transformer<LocalDate> {
 
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
