@@ -56,9 +56,6 @@ test {
         append = false
     }
 
-    // calls Cucumber tests
-    finalizedBy cucumberTest
-
     // calls jacocoTestReport
     finalizedBy jacocoTestReport
 }

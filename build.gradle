@@ -16,10 +16,10 @@ buildscript {
 
 plugins {
     id "io.gitlab.arturbosch.detekt" version "1.0.0.RC7-2"
-    id "com.commercehub.cucumber-jvm" version "0.11"
-}
 
-addCucumberSuite 'cucumberTest'
+    // to run `gradle cucumber` command
+    id "com.github.samueltbrown.cucumber" version "0.9"
+}
 
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
@@ -68,6 +68,8 @@ dependencies {
     compile group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
     compile group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
     compile group: 'io.cucumber', name: 'cucumber-testng', version: cucumberVersion
+    compile group: 'io.cucumber', name: 'cucumber-groovy', version: cucumberVersion
+
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java',  version: '2.53.0'
     compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.20'
 }
