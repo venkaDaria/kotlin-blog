@@ -15,7 +15,7 @@ detekt {
     defaultProfile {
         config = "$projectDir/src/main/resources/default-detekt-config.yml"
         input = "$projectDir/src/"
-        filters = ".*/resources/.*"
+        filters = [".*/resources/.*"]
         output = file("$buildDir/reports")
         outputName = "detekt"
     }
@@ -55,6 +55,9 @@ test {
     jacoco {
         append = false
     }
+
+    // calls Cucumber tests
+    finalizedBy cucumberTest
 
     // calls jacocoTestReport
     finalizedBy jacocoTestReport
