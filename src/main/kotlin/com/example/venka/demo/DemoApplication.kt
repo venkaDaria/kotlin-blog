@@ -15,3 +15,4 @@ fun main(args: Array<String>) {
 // frontend work when load post
 // dup code remove
 // gradle commands
+// deps level(compile...)

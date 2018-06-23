@@ -59,11 +59,11 @@ dependencies {
 
     compile group: 'org.jetbrains', name: 'markdown', version: '0.1.28'
 
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-    testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
-    implementation group: 'io.mockk', name: 'mockk', version: '1.8.1'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    compile group: 'org.testng', name: 'testng', version: '6.13.1'
+    compile group: 'io.mockk', name: 'mockk', version: '1.8.1'
 
-    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
     compile group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
     compile group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
