@@ -14,5 +14,5 @@ fun main(args: Array<String>) {
 // Controller advice ?
 // frontend work when load post
 // dup code remove
-// gradle commands
+// gradle commands + task for each pair glue-package and union this tasks
 // deps level(compile...)
