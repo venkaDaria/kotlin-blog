@@ -16,3 +16,4 @@ fun main(args: Array<String>) {
 // dup code remove
 // gradle commands + task for each pair glue-package and union this tasks
 // deps level(compile...)
+// markdown presentation
