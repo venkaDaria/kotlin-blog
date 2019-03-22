@@ -2,22 +2,23 @@
  * Overrides default build task,
  * can be used with --console=verbose to show called tasks
  */
-build { finalizedBy(tasks['detektCheck']) }
+build { finalizedBy(tasks['detekt']) }
 
 /**
  * Detekt support
- *
- * @use ./gradlew detektCheck
  */
 detekt {
-    version = "1.0.0.RC7-2"
-
-    defaultProfile {
-        config = "$projectDir/src/main/resources/default-detekt-config.yml"
-        input = "$projectDir/src/"
-        filters = [".*/resources/.*"]
-        output = file("$buildDir/reports")
-        outputName = "detekt"
+    config = files("$projectDir/src/main/resources/default-detekt-config.yml")
+    input = files("src/main/kotlin")
+    filters = ".*/resources/.*,.*/build/.*"
+    reports {
+        xml {
+            enabled = false
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/detekt.html")
+        }
     }
 }
 
@@ -29,14 +30,13 @@ detekt {
 apply plugin: "jacoco"
 
 jacoco {
-    toolVersion = "0.8.1"
+    toolVersion = "0.8.3"
 }
 
 jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
-
         html.destination file("$buildDir/reports")
     }
 }
@@ -56,6 +56,6 @@ test {
  *
  * @use ./gradlew wrapper
  */
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.5.1'
+wrapper {
+    gradleVersion = '4.10.3'
 }

@@ -1,21 +1,19 @@
 package com.example.venka.demo.cucumber.postHeader
 
-import com.example.venka.demo.cucumber.support.DateMapper
 import com.example.venka.demo.exception.PostHeaderParsingException
 import com.example.venka.demo.model.PostHeader
 import com.example.venka.demo.model.toPostHeader
 import com.example.venka.demo.cucumber.support.ExceptionHandler
-import cucumber.api.Transform
 import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.hasSize
-import org.testng.Assert.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import java.io.File
 import java.io.FileNotFoundException
 import java.time.LocalDate
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.hasSize
 
 class PostHeaderStepdefs {
 
@@ -49,7 +47,7 @@ class PostHeaderStepdefs {
     }
 
     @Then("^Date must be \"([^\"]*)\"$")
-    fun dateMustBe(@Transform(DateMapper::class) answer: LocalDate) {
+    fun dateMustBe(answer: LocalDate) {
         assertEquals(this.postHeader.date, answer)
     }
 

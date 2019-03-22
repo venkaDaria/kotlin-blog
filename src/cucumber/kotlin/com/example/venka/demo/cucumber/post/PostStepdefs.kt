@@ -1,21 +1,20 @@
 package com.example.venka.demo.cucumber.post
 
-import com.example.venka.demo.cucumber.support.DateMapper
-import com.example.venka.demo.cucumber.support.PostHeaderMapper
 import com.example.venka.demo.model.Post
 import com.example.venka.demo.model.PostHeader
 import com.example.venka.demo.repos.PostRepository
-import cucumber.api.Transform
 import cucumber.api.java.en.And
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
-import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import org.testng.Assert
+import io.mockk.junit5.MockKExtension
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.extension.ExtendWith
 import java.time.LocalDate
 
+@ExtendWith(MockKExtension::class)
 class PostStepdefs {
 
     private lateinit var title: PostHeader
@@ -25,12 +24,8 @@ class PostStepdefs {
     @MockK
     private lateinit var postRepository: PostRepository
 
-    init {
-        MockKAnnotations.init(this)
-    }
-
     @Given("^post title is \"([^\"]*)\"$")
-    fun postTitleIs(@Transform(PostHeaderMapper::class) title: PostHeader) {
+    fun postTitleIs(title: PostHeader) {
         this.title = title
     }
 
@@ -48,21 +43,21 @@ class PostStepdefs {
 
     @Then("^Text must be \"([^\"]*)\"$")
     fun textMustBe(answer: String) {
-        Assert.assertEquals(post.text, answer)
+        assertEquals(post.text, answer)
     }
 
     @Then("^Name must be \"([^\"]*)\"$")
     fun nameMustBe(answer: String) {
-        Assert.assertEquals(post.header.name, answer)
+        assertEquals(post.header.name, answer)
     }
 
     @Then("^Full name must be \"([^\"]*)\"$")
     fun fullNameMustBe(answer: String) {
-        Assert.assertEquals(post.header.fullName, answer)
+        assertEquals(post.header.fullName, answer)
     }
 
     @Then("^Date must be \"([^\"]*)\"$")
-    fun dateMustBe(@Transform(DateMapper::class) answer: LocalDate) {
-        Assert.assertEquals(post.header.date, answer)
+    fun dateMustBe(answer: LocalDate) {
+        assertEquals(post.header.date, answer)
     }
 }

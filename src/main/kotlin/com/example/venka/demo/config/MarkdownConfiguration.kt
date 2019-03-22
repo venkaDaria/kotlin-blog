@@ -16,8 +16,7 @@ class MarkdownConfiguration {
     fun markdownParser(flavour: CommonMarkFlavourDescriptor): MarkdownParser = MarkdownParser(flavour)
 
     @Bean
-    fun htmlGeneratorBuilder(flavour: CommonMarkFlavourDescriptor, markdownParser: MarkdownParser)
-            : (String) -> HtmlGenerator = {
+    fun htmlGeneratorBuilder(flavour: CommonMarkFlavourDescriptor, markdownParser: MarkdownParser): (String) -> HtmlGenerator = {
 
         HtmlGenerator(it, markdownParser.buildMarkdownTreeFromString(it), flavour)
     }

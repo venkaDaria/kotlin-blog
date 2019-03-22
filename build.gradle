@@ -9,14 +9,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
     }
 }
 
 plugins {
-    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC7-2"
+    id "io.gitlab.arturbosch.detekt" version '1.0.0-RC14'
 
     // to run `gradle cucumber` command
     id "com.github.samueltbrown.cucumber" version "0.9"
@@ -24,7 +24,6 @@ plugins {
 
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -46,7 +45,7 @@ compileTestKotlin {
 }
 
 repositories {
-    mavenCentral()
+    jcenter()
     maven { url 'https://dl.bintray.com/jetbrains/markdown/' }
 }
 
@@ -58,21 +57,32 @@ dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
-    implementation group: 'org.jetbrains', name: 'markdown', version: '0.1.28'
+    implementation group: 'org.jetbrains', name: 'markdown', version: '0.1.31'
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
     testImplementation group: 'io.mockk', name: 'mockk', version: '1.9'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitVersion
-    
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
+
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
     implementation group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
     implementation group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
-    implementation group: 'io.cucumber', name: 'cucumber-testng', version: cucumberVersion
+    implementation group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
     implementation group: 'io.cucumber', name: 'cucumber-groovy', version: cucumberVersion
 
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java',  version: '2.53.0'
     implementation group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.20'
+
+    detektPlugins group: 'io.gitlab.arturbosch.detekt', name: 'detekt-formatting', version: '1.0.0-RC14'
+
+    cucumberCompile group: 'io.mockk', name: 'mockk', version: '1.9'
+    cucumberCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitVersion
+    cucumberCompile group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
+    cucumberCompile group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
+    cucumberCompile group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
+    cucumberCompile group: 'io.cucumber', name: 'cucumber-junit', version: cucumberVersion
+    cucumberCompile group: 'io.cucumber', name: 'cucumber-groovy', version: cucumberVersion
 }
 
 apply from: 'tasks.gradle'
