@@ -17,7 +17,7 @@ fun File.toPostHeader(): PostHeader {
     val parts = name.removeSuffix(".md").split("-")
 
     if (parts.size != NAME_PARTS_SIZE) {
-        throw PostHeaderParsingException()
+        throw PostHeaderParsingException("Post Header cannot be parsed")
     }
 
     return PostHeader(parts[0], parts.drop(0).toDate(), name)

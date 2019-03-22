@@ -1,11 +1,10 @@
 package com.example.venka.demo
 
+import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
-import org.testng.annotations.Test
 
 @SpringBootTest
-class DemoApplicationTest : AbstractTestNGSpringContextTests() {
+class DemoApplicationTest {
 
     @Test
     fun contextLoads() {

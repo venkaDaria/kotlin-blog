@@ -1,8 +1,8 @@
 package com.example.venka.demo.model
 
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertNotEquals
-import org.testng.annotations.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 class PostTest {

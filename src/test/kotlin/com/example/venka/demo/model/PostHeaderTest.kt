@@ -1,9 +1,10 @@
 package com.example.venka.demo.model
 
 import com.example.venka.demo.exception.PostHeaderParsingException
-import org.testng.Assert.assertEquals
-import org.testng.Assert.assertNotEquals
-import org.testng.annotations.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.io.File
 import java.time.LocalDate
 
@@ -23,8 +24,11 @@ class PostHeaderTest {
         assertNotEquals(postHeader, postHeader3)
     }
 
-    @Test(expectedExceptions = [PostHeaderParsingException::class])
+    @Test
     fun toPostHeader_Exception() {
-        File("hello").toPostHeader()
+        val exception = assertThrows<PostHeaderParsingException> ("Post Header cannot be parsed") {
+            File("hello").toPostHeader()
+        }
+        assertEquals("Post Header cannot be parsed", exception.message)
     }
 }

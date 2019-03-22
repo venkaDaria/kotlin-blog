@@ -1,8 +1,9 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.41'
-        springBootVersion = '2.0.2.RELEASE'
-        cucumberVersion = '2.+'
+        kotlinVersion = '1.3.21'
+        springBootVersion = '2.1.3.RELEASE'
+        cucumberVersion = '4.2.6'
+        junitVersion = '5.4.1'
     }
     repositories {
         mavenCentral()
@@ -50,28 +51,28 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
 
-    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.5'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlinVersion
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.5'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlinVersion
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
-    compile group: 'org.jetbrains', name: 'markdown', version: '0.1.28'
+    implementation group: 'org.jetbrains', name: 'markdown', version: '0.1.28'
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-    compile group: 'org.testng', name: 'testng', version: '6.13.1'
-    compile group: 'io.mockk', name: 'mockk', version: '1.8.1'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+    testImplementation group: 'io.mockk', name: 'mockk', version: '1.9'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: junitVersion
+    
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
+    implementation group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
+    implementation group: 'io.cucumber', name: 'cucumber-testng', version: cucumberVersion
+    implementation group: 'io.cucumber', name: 'cucumber-groovy', version: cucumberVersion
 
-    compile group: 'io.cucumber', name: 'cucumber-core', version: cucumberVersion
-    compile group: 'io.cucumber', name: 'cucumber-java8', version: cucumberVersion
-    compile group: 'io.cucumber', name: 'cucumber-testng', version: cucumberVersion
-    compile group: 'io.cucumber', name: 'cucumber-groovy', version: cucumberVersion
-
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java',  version: '2.53.0'
-    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.20'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java',  version: '2.53.0'
+    implementation group: 'net.serenity-bdd', name: 'serenity-core', version: '1.9.20'
 }
 
 apply from: 'tasks.gradle'

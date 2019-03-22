@@ -21,12 +21,6 @@ detekt {
     }
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
 /**
  * JaCoCo Support
  *
@@ -49,9 +43,6 @@ jacocoTestReport {
 
 // must be called before JaCoCo tasks
 test {
-    // add TestNG support
-    useTestNG()
-
     jacoco {
         append = false
     }
