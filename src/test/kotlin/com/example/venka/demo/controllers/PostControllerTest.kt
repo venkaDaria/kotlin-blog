@@ -8,6 +8,7 @@ import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
+import me.carleslc.kotlin.extensions.collections.L
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -57,7 +58,7 @@ class PostControllerTest {
 
     @Test
     fun testGetFirstPost() {
-        every { postRepository.listHeaders() } returns listOf(postHeader, postHeader2)
+        every { postRepository.listHeaders() } returns L[postHeader, postHeader2]
         every { postRepository[postHeader] } returns post
 
         val result = mockMvc.perform(get("/post"))
